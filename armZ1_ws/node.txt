@@ -1,0 +1,28 @@
+
+
+#catkin_make
+#source devel/setup.bash
+
+cd armZ1_ws
+
+roslaunch unitree_gazebo z1.launch
+
+cd armZ1_ws/src/arm_module/z1_controller/build
+./sim_ctrl
+
+
+
+
+cd armZ1_ws/src/arm_module/z1_controller/build
+./z1_ctrl
+
+#视觉节点
+rosrun vision_module run_yolo.py
+#roslaunch vision_module run_yolo.launch
+
+#语音节点
+roslaunch voice_module voice_detect_for.launch
+
+#机械臂
+roslaunch arm_module arm_controller.launch
+

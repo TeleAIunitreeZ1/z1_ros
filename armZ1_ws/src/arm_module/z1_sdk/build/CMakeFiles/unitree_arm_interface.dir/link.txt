@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC  -O3 -std=c++14 -pthread -flto -shared  -o ../lib/unitree_arm_interface.cpython-38-x86_64-linux-gnu.so CMakeFiles/unitree_arm_interface.dir/arm_python_interface.cpp.o   -L/home/jianghao/armZ1_ws/src/arm_module/z1_sdk/lib  -Wl,-rpath,/home/jianghao/armZ1_ws/src/arm_module/z1_sdk/lib -lZ1_SDK_x86_64 

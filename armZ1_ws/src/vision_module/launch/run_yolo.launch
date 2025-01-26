@@ -1,0 +1,8 @@
+<launch>
+	<node name="vision_module_node"
+		pkg="vision_module"
+		type="run_yolo.py"
+		output="screen"
+		args="--weights /path/to/weights --source /path/to/source"/>
+		##args="--weights /path/to/weights --source /path/to/source"/>
+</launch>

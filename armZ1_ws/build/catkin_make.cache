@@ -1,0 +1,2 @@
+arm_module:gui_module:vision_module:voice_module
+-DCATKIN_DEVEL_PREFIX=/home/jianghao/armZ1_ws/devel -DCMAKE_INSTALL_PREFIX=/home/jianghao/armZ1_ws/install -G Unix Makefiles

@@ -1,0 +1,8 @@
+prefix=/home/jianghao/armZ1_ws/devel
+
+Name: voice_module
+Description: Description of voice_module
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

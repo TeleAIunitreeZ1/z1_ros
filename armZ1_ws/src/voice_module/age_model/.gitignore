@@ -1,0 +1,12 @@
+__pycache__/
+draft/
+
+# virtual environment
+venv/
+.env
+
+# weights
+test_weights/
+*.pt
+
+ 

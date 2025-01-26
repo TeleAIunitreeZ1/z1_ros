@@ -1,0 +1,112 @@
+//////////////////内参标定////////////////
+//1.启动realsense
+roslaunch realsense2_camera rs_camera.launch
+
+//2.启动calibration标定
+ rosrun camera_calibration cameracalibrator.py --size 8x6 --square 0.024 image:=/camera/color/image_raw
+#打印的标定板是7x9,命令行使用8X6
+
+//3.计算成功后内参保存在/tmp/calibrationdata.tar.gz文件夹中
+
+
+
+///////////////外参标定///////////////
+
+//1.启动realsense
+roslaunch realsense2_camera rs_camera.launch
+
+//2.启动aruco
+cd eye_ws/
+source devel/setup.bash
+roslaunch aruco_ros single.launch
+
+//启动image_view节点显示图像
+rosrun image_view image_view image:=/aruco_single/result
+rostopic echo /aruco_single/pose
+
+//3.启动机械臂  moveit
+source /opt/ros/noetic/setup.bash
+source ~/z1_ws/devel/setup.bash
+
+roslaunch z1_bringup real_arm.launch rviz:=true
+
+//4.启动easy_handeye节点
+cd eye_ws/
+source devel/setup.bash
+roslaunch easy_handeye eye_in_hand_calibrate.launch
+
+/// tf树合并
+rosrun tf2_ros static_transform_publisher x y z qx qy qz /world /camera_link
+
+//发布tf
+cd eye_ws/
+source devel/setup.bash
+roslaunch easy_handeye publish.launch
+
+rosrun tf tf_echo /link00 /camera_link
+
+
+//标定文件Computed calibration: 
+Calibration saved to /home/jianghao/.ros/easy_handeye/z1_rs_d435i_eye_on_hand.yaml
+
+
+//
+robot_ip" value="192.168.123.110" 
+
+
+    
+////////////////////机械臂//////////////////
+//1.打开仿真界面
+cd test_ws/
+roslaunch unitree_gazebo z1.launch
+
+//2.
+cd test_ws/src/z1_controller/build/
+./sim_ctrl        //仿真控制
+./z1_ctrl         //实机控制
+./z1_ctrl k       //示教模式
+
+//3.
+cd test_ws/src/z1_sdk/examples_py/
+python3 ..
+
+//如果是用cpp文件进行控制，在执行make等操作将其变为可执行文件后，进入build文件夹，输入”./”+”可执行文件名”（例：./test_lowcmd)即可操作。注意，这里的可执行文件名需要通过CMakelist里设置来对应其cpp文件。（换句话说，在编写完cpp文件之后，还需要在CMakelist里编辑才能生成对应的可执行文件） 
+
+
+
+
+
+//shell脚本执行命令//视觉+机械臂
+//仿真模式
+cd scripts/
+./sim_robot
+
+//实机模式
+cd scripts/
+./real_robot
+
+//语音模块
+cd scripts/
+./voice.sh
+
+
+__pycache__/
+draft/
+
+# virtual environment
+venv/
+.env
+
+# weights
+test_weights/
+*.pt
+
+
+
+
+
+[[ 0.00140756 -0.00114016  0.99999836  0.09783193]
+ [-0.99768202  0.06803221  0.00148187  0.03635455]
+ [-0.06803379 -0.99768247 -0.00104176 -0.0611316 ]
+ [ 0.          0.          0.          1.        ]]
+ 

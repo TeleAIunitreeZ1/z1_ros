@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC  -O3 -std=c++14 -pthread  -shared -Wl,-soname,libgtest_main.so -o ../lib/libgtest_main.so CMakeFiles/gtest_main.dir/src/gtest_main.cc.o   -L/home/jianghao/armZ1_ws/src/arm_module/z1_controller/lib  -Wl,-rpath,/home/jianghao/armZ1_ws/src/arm_module/z1_controller/lib:/home/jianghao/armZ1_ws/src/arm_module/z1_controller/build/gtest/lib ../lib/libgtest.so 

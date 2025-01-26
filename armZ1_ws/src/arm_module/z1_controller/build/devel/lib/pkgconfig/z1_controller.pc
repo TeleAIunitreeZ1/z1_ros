@@ -1,0 +1,8 @@
+prefix=/home/jianghao/armZ1_ws/src/arm_module/z1_controller/build/devel
+
+Name: z1_controller
+Description: Description of z1_controller
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

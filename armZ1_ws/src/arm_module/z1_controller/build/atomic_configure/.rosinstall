@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/jianghao/armZ1_ws/src/arm_module/z1_controller/build/devel/setup.sh

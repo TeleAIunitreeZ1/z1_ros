@@ -1,0 +1,7 @@
+<launch>
+	<node name="voice_recognition_node"
+		pkg="voice_module"
+		type="voice_detect.py"
+		output="screen">
+	</node>
+</launch>
